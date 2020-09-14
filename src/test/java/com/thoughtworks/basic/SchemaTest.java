@@ -12,15 +12,16 @@ public class SchemaTest {
         //given
         SchemaAnalisy schemaAnalisy = new SchemaAnalisy();
         SchemaFilter schemaFilter = new SchemaFilter();
-        String input = "-p 8080";
+        String input = " -p 8080 ";
         int expectP = 8080;
         Boolean expectL = false;
         String expectD = "";
         //when
         List<SchemaRule> schemaRules = schemaAnalisy.formatInputSchema(input);
         //then
-        assertEquals(schemaFilter.filterSchema("l").getValue(),expectL);
-        assertEquals(schemaFilter.filterSchema("p").getValue(),expectP);
-        assertEquals(schemaFilter.filterSchema("d").getValue(),expectD);
+        //assertEquals(schemaRules.get(1).getValue(),1);
+        assertEquals(schemaFilter.filterSchema(schemaRules,"l").getValue(),expectL);
+        assertEquals(schemaFilter.filterSchema(schemaRules,"p").getValue(),expectP);
+        assertEquals(schemaFilter.filterSchema(schemaRules,"d").getValue(),expectD);
     }
 }
