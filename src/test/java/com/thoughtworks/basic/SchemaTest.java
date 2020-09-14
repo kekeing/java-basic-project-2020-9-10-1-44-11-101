@@ -11,6 +11,7 @@ public class SchemaTest {
     public void should_return_int_8080_when_given_String_p_8080() {
         //given
         SchemaAnalisy schemaAnalisy = new SchemaAnalisy();
+        SchemaFilter schemaFilter = new SchemaFilter();
         String input = "-p 8080";
         int expectP = 8080;
         Boolean expectL = false;
@@ -18,8 +19,8 @@ public class SchemaTest {
         //when
         List<SchemaRule> schemaRules = schemaAnalisy.formatInputSchema(input);
         //then
-        assertEquals(schemaRules.getValueAccordKey("l"),expectL);
-        assertEquals(schemaRules.getValueAccordKey("p"),expectP);
-        assertEquals(schemaRules.getValueAccordKey("d"),expectD);
+        assertEquals(schemaFilter.filterSchema("l").getValue(),expectL);
+        assertEquals(schemaFilter.filterSchema("p").getValue(),expectP);
+        assertEquals(schemaFilter.filterSchema("d").getValue(),expectD);
     }
 }
