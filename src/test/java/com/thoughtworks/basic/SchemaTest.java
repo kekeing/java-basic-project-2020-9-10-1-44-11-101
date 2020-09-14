@@ -2,20 +2,24 @@ package com.thoughtworks.basic;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class SchemaTest {
     @Test
-    public void hello_world_test() {
+    public void should_return_int_8080_when_given_String_p_8080() {
         //given
-        gitSchemaRule schemaRule = new SchemaRule();
-        int expect = 8080;
-        Character input = 'p';
-
+        SchemaAnalisy schemaAnalisy = new SchemaAnalisy();
+        String input = "-p 8080";
+        int expectP = 8080;
+        Boolean expectL = false;
+        String expectD = "";
         //when
-        int result = schemaRule.getFormatDate(input);
-
+        List<SchemaRule> schemaRules = schemaAnalisy.formatInputSchema(input);
         //then
-        assertEquals(result,expect);
+        assertEquals(schemaRules.getValueAccordKey("l"),expectL);
+        assertEquals(schemaRules.getValueAccordKey("p"),expectP);
+        assertEquals(schemaRules.getValueAccordKey("d"),expectD);
     }
 }
