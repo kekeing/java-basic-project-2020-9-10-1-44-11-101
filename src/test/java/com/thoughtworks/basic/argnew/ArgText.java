@@ -30,4 +30,29 @@ public class ArgText {
             assertThat(exception.getMessage(), is("value不能以-开头"));
         }
     }
+
+    @Test
+    public void should_throw_error_no_legal_when_repeat_flag() throws Exception {
+        String inputArgs = "-l true -l false";
+
+        try {
+            Args args = new Args(inputArgs);
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            assertThat(exception.getMessage(), is("不允许输入重复flag"));
+        }
+    }
+
+
+    @Test
+    public void should_return_args_when_inputArgs() throws Exception {
+        String inputArgs = "-l true -p 8080 -d /usr/logs";
+
+        Args args = new Args(inputArgs);
+
+        assertEquals("[Arg{flag='l', value=true, type='boolean'}, " +
+                        "Arg{flag='p', value=8080, type='int'}, " +
+                        "Arg{flag='d', value=/usr/logs, type='String'}]"
+                ,args.getArgList().toString());
+    }
 }
