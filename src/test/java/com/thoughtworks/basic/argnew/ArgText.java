@@ -1,5 +1,6 @@
 package com.thoughtworks.basic.argnew;
 
+import newargs.Args;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
